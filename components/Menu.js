@@ -1,12 +1,12 @@
 // This is the data we will be using, study it but don't change anything, yet.
 
 let menuItems = [
-  'Students',
-  'Faculty',
+  "Students",
+  "Faculty",
   "What's New",
-  'Tech Trends',
-  'Music',
-  'Log Out'
+  "Tech Trends",
+  "Music",
+  "Log Out",
 ];
 
 /* 
@@ -19,7 +19,30 @@ let menuItems = [
   </div>
 
   The 'menuMaker' takes an array of menu items as its only argument.
+*/
 
+function menuMaker(list) {
+  let menu = document.createElement("div");
+  menu.classList.add("menu");
+  let menuList = document.createElement("ul");
+  menu.appendChild(menuList);
+
+  list.forEach((item) => {
+    let menuItem = document.createElement("li");
+    menuItem.textContent = item;
+    menuList.appendChild(menuItem);
+  });
+
+  let menuButton = document.querySelector(".menu-button");
+  menuButton.addEventListener("click", (e) => {
+    menu.classList.toggle("menu--open");
+  });
+
+  return menu;
+}
+
+document.querySelector(".header").appendChild(menuMaker(menuItems));
+/*
   Step 2: Inside the function, iterate over the array creating a list item <li> element for each item in the array.
   Add those items to the <ul>
 
